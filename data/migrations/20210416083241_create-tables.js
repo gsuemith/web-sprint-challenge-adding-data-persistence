@@ -26,7 +26,7 @@ exports.up = function(knex) {
         .onUpdate('CASCADE');
     })
     .createTable('project_resources', tbl => {
-      tbl.increments()
+      tbl.increments();
       tbl.integer('project_id')
         .unsigned()
         .notNullable()
@@ -39,8 +39,10 @@ exports.up = function(knex) {
         .notNullable()
         .references('resource_id')
         .inTable('resources')
-        .onDelete('RESTRICT')
+        .onDelete('RESTRICT') //assignments must be deleted before resource
         .onUpdate('RESTRICT');
+      tbl.decimal('quantity', 3);
+      tbl.string('unit');
     })
 };
 
