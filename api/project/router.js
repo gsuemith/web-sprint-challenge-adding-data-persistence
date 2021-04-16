@@ -4,6 +4,8 @@ const Projects = require('./model')
 
 const router = express.Router()
 
+router.use('/:project_id', Projects.checkId)
+
 // [GET] all projects
 router.get('/', (req, res, next) => {
   Projects.find()
@@ -22,6 +24,24 @@ router.post('/', (req, res, next) => {
   .catch(next)
 })
 
+// STRETCH ENDPOINTS
+// [GET] project resources
+router.get('/:project_id/resources', (req, res, next) => {
+  Projects.projectResources(req.params.project_id)
+  .then(resources => {
+    res.status(200).json(resources)
+  })
+  .catch(next);
+})
+
+// [GET] project tasks
+router.get('/:project_id/tasks', (req, res, next) => {
+  Projects.projectTasks(req.params.project_id)
+  .then(tasks => {
+    res.status(200).json(tasks)
+  })
+  .catch(next)
+})
 
 // function to convert integer to boolean
 const trueOrFalse = projects => {
