@@ -119,5 +119,13 @@ Relational Databases is a way to store data with defined relationships so that d
 SQL is a language that can retrieve and manipulate data in relational databases through queries.
 
 2. Why do tables need a Primary Key?
+
+Primary keys makes every row in a table unique, regardless of data.  It also allows other tables to connect to the table with foreign keys.
+
 3. What is the name given to a table column that references the Primary Key on another table?
+
+Foreign keys
+
 4. What do we need in order to have a _many to many_ relationship between two tables?
+
+Junction tables
