@@ -9,7 +9,7 @@ const taskRouter = require('./task/router')
 const server = express()
 
 //global middlewares
-server.use(helmet())
+server.use(express.json())
 server.use(helmet())
 
 //routers
